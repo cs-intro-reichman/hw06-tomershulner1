@@ -23,7 +23,11 @@ public class Runigram {
 		//imageOut = grayScaled(tinypic);
 		imageOut = scaled(tinypic, 3, 5);
 		System.out.println();
-		print(imageOut);
+		//print(imageOut);
+
+		Color c1 = new Color(100, 40, 100);
+		Color c2 = new Color(200, 20, 40);
+		print(blend(c1, c2, 0.25));
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
@@ -160,8 +164,12 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		Color blended = new Color(
+			(((int)(c1.getRed() * alpha) + (int)(c2.getRed() * (1 - alpha)))),
+			(((int)(c1.getGreen() * alpha) + (int)(c2.getGreen() * (1 - alpha)))),
+			(((int)(c1.getBlue() * alpha) + (int)(c2.getBlue() * (1 - alpha))))
+		);
+		return blended;
 	}
 	
 	/**
@@ -171,8 +179,17 @@ public class Runigram {
 	 * The two images must have the same dimensions.
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		int rows = image1.length;
+		int cols = image1[0].length;
+		Color[][] blended = new Color[rows][cols];
+
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				blended[i][j] = blend(image1[i][j], image2[i][j], alpha);
+			}
+		}
+
+		return blended;
 	}
 
 	/**
@@ -182,7 +199,16 @@ public class Runigram {
 	 * of the source image.
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
-		//// Replace this comment with your code
+		
+		if ((source.length != target.length) || (source[0].length != target[0].length))
+		{
+			target = scaled(target, source[0].length, source.length);
+		}
+
+		for (int i = 0; i <= n; i++) {
+			double alpha = (n - i) / n;
+			source = blend(source, target, alpha);
+		}
 	}
 	
 	/** Creates a canvas for the given image. */
