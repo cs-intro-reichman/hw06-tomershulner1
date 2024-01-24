@@ -208,6 +208,8 @@ public class Runigram {
 		for (int i = 0; i <= n; i++) {
 			double alpha = (n - i) / n;
 			source = blend(source, target, alpha);
+			display(source);
+			StdDraw.pause(5000);
 		}
 	}
 	
