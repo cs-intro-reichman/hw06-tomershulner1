@@ -185,7 +185,8 @@ public class Runigram {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				blended[i][j] = blend(image1[i][j], image2[i][j], alpha);
+				Color new_color = blend(image1[i][j], image2[i][j], alpha);
+				blended[i][j] = new_color;
 			}
 		}
 
