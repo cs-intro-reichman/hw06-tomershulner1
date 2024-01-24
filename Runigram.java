@@ -150,7 +150,7 @@ public class Runigram {
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				scaled[i][j] = 
-				image[Math.min((int)(i * height_factor), i)][Math.min((int)(j * width_factor), j)];
+				image[(int)(i * height_factor)][(int)(j * width_factor)];
 			}
 		}
 		
