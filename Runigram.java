@@ -141,13 +141,17 @@ public class Runigram {
 	 * The image is scaled (resized) to have the given width and height.
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
+
+		int w0 = image[0].length;
+		int h0 = image.length;
+
 		Color[][] scaled = new Color[height][width];
 
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
-				int new_i = i * image.length / height;
-				int new_j = j * image[0].length / width;
-				scaled[i][j] = image[new_i][new_j];
+				int origin_i = i * h0 / height;
+				int origin_j = j * w0 / width; 
+				scaled[i][j] = image[origin_i][origin_j];
 			}
 		}
 		return scaled;
@@ -160,14 +164,12 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		Color blended = new Color(
-			((int)((c1.getRed() * alpha) + (c2.getRed() * (1 - alpha)))),
-			((int)((c1.getGreen() * alpha) + (c2.getGreen() * (1 - alpha)))),
-			((int)((c1.getBlue() * alpha) + (c2.getBlue() * (1 - alpha))))
-		);
-		return blended;
+		int red = (int)(alpha * c1.getRed() + (1 - alpha) * c2.getRed());
+		int green = (int)(alpha * c1.getGreen() + (1 - alpha) * c2.getGreen());
+		int blue = (int)(alpha * c1.getBlue() + (1 - alpha) * c2.getBlue());
+		return new Color(red, green, blue);
 	}
-	
+
 	/**
 	 * Cosntructs and returns an image which is the blending of the two given images.
 	 * The blended image is the linear combination of (alpha) part of the first image
@@ -187,6 +189,7 @@ public class Runigram {
 
 		return blended;
 	}
+
 
 	/**
 	 * Morphs the source image into the target image, gradually, in n steps.
