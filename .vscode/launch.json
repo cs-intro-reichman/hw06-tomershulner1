@@ -1,0 +1,42 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Editor2",
+            "request": "launch",
+            "mainClass": "Editor2",
+            "projectName": "hw06-tomershulner1_f7afeb9f"
+        },
+        {
+            "type": "java",
+            "name": "Editor2",
+            "request": "launch",
+            "mainClass": "Editor2",
+            "projectName": "hw06-tomershulner1_f7afeb9f"
+        },
+        {
+            "type": "java",
+            "name": "Runigram",
+            "request": "launch",
+            "mainClass": "Runigram",
+            "projectName": "hw06-tomershulner1_f7afeb9f"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Lunch App",
+            "request": "launch",
+            "mainClass": "Editor3",
+            "args": [
+                "cake.ppm",
+                "ironman.ppm",
+                "150"
+            ]
+        }
+    ]
+}
