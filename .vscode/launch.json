@@ -31,11 +31,11 @@
             "type": "java",
             "name": "Lunch App",
             "request": "launch",
-            "mainClass": "Editor2",
+            "mainClass": "Editor3",
             "args": [
+                "cake.ppm",
                 "ironman.ppm",
-                "800",
-                "500"
+                "150"
             ]
         }
     ]
